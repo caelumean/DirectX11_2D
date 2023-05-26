@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcxproj", "{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor_Window", "Editor_Window\Editor_Window.vcxproj", "{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine_SOURCE", "Engine_SOURCE\Engine_SOURCE.vcxproj", "{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalEngine", "CalEngine\CalEngine.vcxproj", "{208571D6-1984-4D1B-A1AB-12A1D5E66339}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shader_SOURCE", "Shader_SOURCE\Shader_SOURCE.vcxitems", "{406EF52E-C709-4F37-A8DC-BE6EF99BEFCD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine_SOURCE", "Engine_SOURCE\Engine_SOURCE.vcxitems", "{EFDF8CE3-7F01-4C80-B32B-B3AAB1F96D8D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shader_SOURCE", "Shader_SOURCE\Shader_SOURCE.vcxitems", "{F5DDE189-8023-48D3-B298-706FD8B04CF9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor_SOURCE", "Editor_SOURCE\Editor_SOURCE.vcxitems", "{1BA8B0FD-892A-47E1-8743-5622051FCECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,27 +21,35 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}.Debug|x64.ActiveCfg = Debug|x64
-		{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}.Debug|x64.Build.0 = Debug|x64
-		{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}.Debug|x86.ActiveCfg = Debug|Win32
-		{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}.Debug|x86.Build.0 = Debug|Win32
-		{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}.Release|x64.ActiveCfg = Release|x64
-		{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}.Release|x64.Build.0 = Release|x64
-		{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}.Release|x86.ActiveCfg = Release|Win32
-		{6BF006E0-237F-4D19-B97B-C6C7A52B55FE}.Release|x86.Build.0 = Release|Win32
-		{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}.Debug|x64.ActiveCfg = Debug|x64
-		{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}.Debug|x64.Build.0 = Debug|x64
-		{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}.Debug|x86.ActiveCfg = Debug|Win32
-		{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}.Debug|x86.Build.0 = Debug|Win32
-		{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}.Release|x64.ActiveCfg = Release|x64
-		{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}.Release|x64.Build.0 = Release|x64
-		{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}.Release|x86.ActiveCfg = Release|Win32
-		{B7558DD1-521B-4904-ADDB-A2F4CF4BB3DB}.Release|x86.Build.0 = Release|Win32
+		{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}.Debug|x64.ActiveCfg = Debug|x64
+		{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}.Debug|x64.Build.0 = Debug|x64
+		{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}.Debug|x86.ActiveCfg = Debug|Win32
+		{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}.Debug|x86.Build.0 = Debug|Win32
+		{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}.Release|x64.ActiveCfg = Release|x64
+		{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}.Release|x64.Build.0 = Release|x64
+		{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}.Release|x86.ActiveCfg = Release|Win32
+		{0645CB09-A4D4-4C7E-88AF-C7D2B64D6529}.Release|x86.Build.0 = Release|Win32
+		{208571D6-1984-4D1B-A1AB-12A1D5E66339}.Debug|x64.ActiveCfg = Debug|x64
+		{208571D6-1984-4D1B-A1AB-12A1D5E66339}.Debug|x64.Build.0 = Debug|x64
+		{208571D6-1984-4D1B-A1AB-12A1D5E66339}.Debug|x86.ActiveCfg = Debug|Win32
+		{208571D6-1984-4D1B-A1AB-12A1D5E66339}.Debug|x86.Build.0 = Debug|Win32
+		{208571D6-1984-4D1B-A1AB-12A1D5E66339}.Release|x64.ActiveCfg = Release|x64
+		{208571D6-1984-4D1B-A1AB-12A1D5E66339}.Release|x64.Build.0 = Release|x64
+		{208571D6-1984-4D1B-A1AB-12A1D5E66339}.Release|x86.ActiveCfg = Release|Win32
+		{208571D6-1984-4D1B-A1AB-12A1D5E66339}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8E7B539B-4762-49CA-99B5-35E37974BE1C}
+		SolutionGuid = {4436CD72-CAC7-46D7-BE9A-0CC259C9DD4D}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Editor_SOURCE\Editor_SOURCE.vcxitems*{0645cb09-a4d4-4c7e-88af-c7d2b64d6529}*SharedItemsImports = 4
+		Engine_SOURCE\Engine_SOURCE.vcxitems*{0645cb09-a4d4-4c7e-88af-c7d2b64d6529}*SharedItemsImports = 4
+		Editor_SOURCE\Editor_SOURCE.vcxitems*{1ba8b0fd-892a-47e1-8743-5622051fcecd}*SharedItemsImports = 9
+		Engine_SOURCE\Engine_SOURCE.vcxitems*{208571d6-1984-4d1b-a1ab-12a1d5e66339}*SharedItemsImports = 4
+		Engine_SOURCE\Engine_SOURCE.vcxitems*{efdf8ce3-7f01-4c80-b32b-b3aab1f96d8d}*SharedItemsImports = 9
+		Shader_SOURCE\Shader_SOURCE.vcxitems*{f5dde189-8023-48d3-b298-706fd8b04cf9}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal
