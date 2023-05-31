@@ -1,10 +1,10 @@
-#include "GraphicDevice_Dx11.h"
-#include "Application.h"
-#include "Renderer.h"
+#include "yaGraphicDevice_Dx11.h"
+#include "yaApplication.h"
+#include "yaRenderer.h"
 
-extern Application application;
+extern ya::Application application;
 
-namespace graphics
+namespace ya::graphics
 {
 	GraphicDevice_Dx11::GraphicDevice_Dx11()
 	{
@@ -27,15 +27,15 @@ namespace graphics
 		HWND hWnd = application.GetHwnd();
 		UINT deviceFlag = D3D11_CREATE_DEVICE_DEBUG;
 		D3D_FEATURE_LEVEL featureLevel = (D3D_FEATURE_LEVEL)0;
-
+		
 		//ID3D11Device* pDevice = nullptr;
 		//ID3D11DeviceContext* pContext = nullptr;
 		//ID3D11DeviceContext** ppContext = &pContext;
 		D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr
-			, deviceFlag, nullptr, 0
-			, D3D11_SDK_VERSION
-			, mDevice.GetAddressOf(), &featureLevel
-			, mContext.GetAddressOf());
+		, deviceFlag, nullptr, 0
+		, D3D11_SDK_VERSION
+		, mDevice.GetAddressOf(), &featureLevel
+		, mContext.GetAddressOf());
 
 		// SwapChain
 		DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
@@ -45,7 +45,7 @@ namespace graphics
 
 		if (!CreateSwapChain(&swapChainDesc, hWnd))
 			return;
-
+		
 		// get rendertarget by swapchain
 		if (FAILED(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D)
 			, (void**)mRenderTarget.GetAddressOf())))
@@ -68,7 +68,7 @@ namespace graphics
 
 		depthStencilDesc.SampleDesc.Count = 1;
 		depthStencilDesc.SampleDesc.Quality = 0;
-
+		
 		depthStencilDesc.MipLevels = 0;
 		depthStencilDesc.MiscFlags = 0;
 
@@ -90,12 +90,12 @@ namespace graphics
 		//	FLOAT MaxDepth;
 		//} 	D3D11_VIEWPORT;
 
-		mViewPort =
-		{
+		mViewPort = 
+		{ 
 			0.0f, 0.0f
-			, (float)(winRect.right - winRect.left)
+			, (float)(winRect.right - winRect .left)
 			, (float)(winRect.bottom - winRect.top)
-			, 0.0f, 1.0f
+			, 0.0f, 1.0f 
 		};
 
 		BindViewPort(&mViewPort);
@@ -123,7 +123,7 @@ namespace graphics
 		dxgiDesc.BufferDesc.RefreshRate.Denominator = 1;
 		dxgiDesc.BufferDesc.Scaling = DXGI_MODE_SCALING::DXGI_MODE_SCALING_UNSPECIFIED;
 		dxgiDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER::DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-
+		
 		dxgiDesc.SampleDesc.Count = 1;
 		dxgiDesc.SampleDesc.Quality = 0;
 
@@ -153,7 +153,7 @@ namespace graphics
 		//triangleDesc.CPUAccessFlags = desc->CPUAccessFlags;
 
 
-		/*D3D11_SUBRESOURCE_DATA triangleData = {};
+		/*D11_SUBRESOURCE_DATA triangleData = {};
 		triangleData.pSysMem = vertexes;*/
 
 		if (FAILED(mDevice->CreateBuffer(desc, data, buffer)))
@@ -165,43 +165,64 @@ namespace graphics
 	{
 
 
-
-		std::filesystem::path shaderPath
+		std::filesystem::path shaderPath 
 			= std::filesystem::current_path().parent_path();
 		shaderPath += L"\\Shader_SOURCE\\";
 
-		std::filesystem::path vsPath(shaderPath.c_str());
-		vsPath += L"TriangleVS.hlsl";
+		/*std::filesystem::path TvsPath(shaderPath.c_str());
+		TvsPath += L"TriangleVS.hlsl";*/
 
-		D3DCompileFromFile(vsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &renderer::triangleVSBlob, &renderer::errorBlob);
+		std::filesystem::path SvsPath(shaderPath.c_str());
+		SvsPath += L"SquareVS.hlsl";
 
-		if (renderer::errorBlob)
+		// 삼각형
+	/*	D3DCompileFromFile(TvsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+		, "main", "vs_5_0", 0, 0, &ya::renderer::triangleVSBlob, &ya::renderer::errorBlob);*/
+
+		// 사각형
+		D3DCompileFromFile(SvsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+			, "main", "vs_5_0", 0, 0, &ya::renderer::squreVSBlob, &ya::renderer::errorBlob);
+
+		if (ya::renderer::errorBlob)
 		{
-			OutputDebugStringA((char*)renderer::errorBlob->GetBufferPointer());
-			renderer::errorBlob->Release();
+			OutputDebugStringA((char*)ya::renderer::errorBlob->GetBufferPointer());
+			ya::renderer::errorBlob->Release();
 		}
 
-		mDevice->CreateVertexShader(renderer::triangleVSBlob->GetBufferPointer()
-			, renderer::triangleVSBlob->GetBufferSize()
-			, nullptr, &renderer::triangleVSShader);
+	/*	mDevice->CreateVertexShader(ya::renderer::triangleVSBlob->GetBufferPointer()
+			, ya::renderer::triangleVSBlob->GetBufferSize()
+			, nullptr , &ya::renderer::triangleVSShader);*/
 
-		std::filesystem::path psPath(shaderPath.c_str());
-		psPath += L"TrianglePS.hlsl";
+		mDevice->CreateVertexShader(ya::renderer::squreVSBlob->GetBufferPointer()
+			, ya::renderer::squreVSBlob->GetBufferSize()
+			, nullptr, &ya::renderer::squreVSShader);
 
-		D3DCompileFromFile(psPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &renderer::trianglePSBlob, &renderer::errorBlob);
+		//삼각형
+	/*	std::filesystem::path TpsPath(shaderPath.c_str());
+		TpsPath += L"TrianglePS.hlsl";*/
+		//사각형
+		std::filesystem::path SpsPath(shaderPath.c_str());
+		SpsPath += L"SquarePS.hlsl";
 
-		if (renderer::errorBlob)
+		/*D3DCompileFromFile(TpsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+			, "main", "ps_5_0", 0, 0, &ya::renderer::trianglePSBlob, &ya::renderer::errorBlob);*/
+
+		D3DCompileFromFile(SpsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+			, "main", "ps_5_0", 0, 0, &ya::renderer::squrePSBlob, &ya::renderer::errorBlob);
+
+		if (ya::renderer::errorBlob)
 		{
-			OutputDebugStringA((char*)renderer::errorBlob->GetBufferPointer());
-			renderer::errorBlob->Release();
+			OutputDebugStringA((char*)ya::renderer::errorBlob->GetBufferPointer());
+			ya::renderer::errorBlob->Release();
 		}
 
-		mDevice->CreatePixelShader(renderer::trianglePSBlob->GetBufferPointer()
-			, renderer::trianglePSBlob->GetBufferSize()
-			, nullptr, &renderer::trianglePSShader);
+	/*	mDevice->CreatePixelShader(ya::renderer::trianglePSBlob->GetBufferPointer()
+			, ya::renderer::trianglePSBlob->GetBufferSize()
+			, nullptr, &ya::renderer::trianglePSShader);*/
 
+		mDevice->CreatePixelShader(ya::renderer::squrePSBlob->GetBufferPointer()
+			, ya::renderer::squrePSBlob->GetBufferSize()
+			, nullptr, &ya::renderer::squrePSShader);
 
 		// Input layout 정점 구조 정보를 넘겨줘야한다.
 		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};
@@ -220,11 +241,15 @@ namespace graphics
 		arrLayout[1].SemanticName = "COLOR";
 		arrLayout[1].SemanticIndex = 0;
 
-		mDevice->CreateInputLayout(arrLayout, 2
+		/*mDevice->CreateInputLayout(arrLayout, 2
 			, renderer::triangleVSBlob->GetBufferPointer()
 			, renderer::triangleVSBlob->GetBufferSize()
-			, &renderer::triangleLayout);
+			, &renderer::triangleLayout);*/
 
+		mDevice->CreateInputLayout(arrLayout, 2
+			, renderer::squreVSBlob->GetBufferPointer()
+			, renderer::squreVSBlob->GetBufferSize()
+			, &renderer::squreLayout);
 
 		return true;
 	}
@@ -242,7 +267,7 @@ namespace graphics
 
 		dxgiDesc.SampleDesc.Count = desc->SampleDesc.Count;
 		dxgiDesc.SampleDesc.Quality = 0;
-
+		
 		dxgiDesc.MipLevels = desc->MipLevels;
 		dxgiDesc.MiscFlags = desc->MiscFlags;
 
@@ -259,7 +284,7 @@ namespace graphics
 	{
 		mContext->RSSetViewports(1, viewPort);
 	}
-
+	
 	void GraphicDevice_Dx11::Draw()
 	{
 		// render target clear
@@ -286,17 +311,25 @@ namespace graphics
 		UINT vertexsize = sizeof(renderer::Vertex);
 		UINT offset = 0;
 
-		mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);
+		/*mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);
 		mContext->IASetInputLayout(renderer::triangleLayout);
+		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);*/
+
+		mContext->IASetVertexBuffers(0, 1, &renderer::squreBuffer, &vertexsize, &offset);
+		mContext->IASetInputLayout(renderer::squreLayout);
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		//Bind VS, PS 
+	/*	mContext->VSSetShader(renderer::triangleVSShader, 0, 0);
+		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);*/
 
-		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);
-		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
+		mContext->VSSetShader(renderer::squreVSShader, 0, 0);
+		mContext->PSSetShader(renderer::squrePSShader, 0, 0);
 
 		// Draw Render Target
-		mContext->Draw(3, 0);
+		// 왜 안되는 것인가?!
+		//mContext->Draw(3, 0);
+		mContext->Draw(36, 0);
 
 		// 레더타겟에 있는 이미지를 화면에 그려준다
 		mSwapChain->Present(0, 0);

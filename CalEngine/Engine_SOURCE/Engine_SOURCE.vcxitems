@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <ItemsProjectGuid>{efdf8ce3-7f01-4c80-b32b-b3aab1f96d8d}</ItemsProjectGuid>
+    <ItemsProjectGuid>{ef382c18-c456-428f-9c15-458a51343df7}</ItemsProjectGuid>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -14,32 +14,32 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Application.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)CalEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Entity.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Enums.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Input.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Math.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Renderer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Resource.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Resources.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Time.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)GraphicDevice_Dx11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphics.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CalEngine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTime.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Application.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Entity.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Input.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Math.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Renderer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Resource.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Resources.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Time.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)GraphicDevice_Dx11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTime.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Math.inl" />
+    <None Include="$(MSBuildThisFileDirectory)yaMath.inl" />
   </ItemGroup>
 </Project>

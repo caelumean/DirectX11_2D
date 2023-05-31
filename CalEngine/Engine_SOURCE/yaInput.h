@@ -1,7 +1,9 @@
 #pragma once
 #include "CalEngine.h"
 
-using namespace math;
+namespace ya
+{
+	using namespace ya::math;
 	enum class eKeyCode
 	{
 		Q, W, E, R, T, Y, U, I, O, P,
@@ -58,11 +60,11 @@ using namespace math;
 		{
 			return mKeys[static_cast<UINT>(keyCode)].state == eKeyState::Up;
 		}
-
+		
 		static __forceinline Vector2 GetMousePos() { return mMousePos; }
 
 	private:
 		static std::vector<Key> mKeys;
 		static Vector2 mMousePos;
-};
-
+	};
+}
