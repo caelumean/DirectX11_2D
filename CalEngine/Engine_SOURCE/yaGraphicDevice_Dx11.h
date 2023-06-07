@@ -1,5 +1,6 @@
 #pragma once
 #include "CalEngine.h"
+#include "yaGraphics.h"
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -18,21 +19,25 @@ namespace ya::graphics
 		bool CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd);
 		bool CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data);
 		bool CreateShader();
-
 		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data);
 
 		void BindViewPort(D3D11_VIEWPORT* viewPort);
+
+		void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size);
+		void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
+		void BindsConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
+
 
 		void Draw();
 
 	private:
 		// 실제 그래픽카드 하드웨어 객체
-		Microsoft::WRL::ComPtr<ID3D11Device> mDevice; 
-		
+		Microsoft::WRL::ComPtr<ID3D11Device> mDevice;
+
 		//  dx11에서 직접적으로 디바이스객체 접근하지않고
 		// 이객체를 이용하여 명령을 내린다.
-		Microsoft::WRL::ComPtr<ID3D11DeviceContext> mContext; 
-		
+		Microsoft::WRL::ComPtr<ID3D11DeviceContext> mContext;
+
 		// 최종적으로 그려질 텍스처(도화지)
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> mRenderTarget;
 
@@ -57,3 +62,4 @@ namespace ya::graphics
 		return device;
 	}
 }
+

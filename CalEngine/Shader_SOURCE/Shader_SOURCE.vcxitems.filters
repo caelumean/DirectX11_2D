@@ -12,12 +12,6 @@
     <FxCompile Include="$(MSBuildThisFileDirectory)TriangleVS.hlsl">
       <Filter>VS</Filter>
     </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)SquareVS.hlsl">
-      <Filter>VS</Filter>
-    </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)SquarePS.hlsl">
-      <Filter>PS</Filter>
-    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)TrianglePS.hlsli">
