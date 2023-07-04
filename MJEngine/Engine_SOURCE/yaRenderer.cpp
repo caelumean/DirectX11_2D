@@ -3,8 +3,6 @@
 #include "yaTexture.h"
 #include "yaMaterial.h"
 
-
-
 namespace renderer
 {
 	using namespace ya;
