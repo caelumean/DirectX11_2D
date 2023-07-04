@@ -35,7 +35,7 @@ namespace ya
 		mt->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mt->SetMaterial(Resources::Find<Material>(L"TitleText"));
 
-		TitleText->GetComponent<Transform>()->SetScale(Vector3(0.5f, 0.5f, 1.0f));
+		TitleText->GetComponent<Transform>()->SetScale(Vector3(0.5f, 0.5f, 0.8f));
 		TitleText->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 
 	}
